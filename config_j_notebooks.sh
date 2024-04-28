@@ -1,14 +1,8 @@
 #!/bin/bash
 echo "...Starting Jupyter Notebooks Git Configuration..."
 
-
-
-
-# inserting filter to .gitattribute:
-
 echo "Creating filter..."
-echo "[filter "strip-notebook-output"]"  >> .git/config
-echo "clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR""  >> .git/config
+git config filter.strip-notebook-output.clean 'jupyter nbconvert --ClearOutputPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR'
 echo "Filter Created."
 
 echo "Adding .gitattributes..."
